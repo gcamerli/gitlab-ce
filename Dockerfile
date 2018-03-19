@@ -65,6 +65,23 @@ RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh
 # Setup RVM
 RUN echo "[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm" >> $HOME/.zshrc
 
-# Copy post install setup
-COPY ./rvm_setup.sh .
-COPY ./gdk_setup.sh .
+# Setup RVM
+ENV PATH /usr/local/rvm/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+RUN bash -l -c "rvm install 2.3.6"
+
+# Setup GDK
+RUN bash -l -c "gem install bundler"
+RUN bash -l -c "gem install gitlab-development-kit"
+RUN bash -l -c "gdk init"
+
+WORKDIR $HOME/gitlab-development-kit
+RUN echo 0.0.0.0 > host
+
+# Install foreman
+RUN bash -l -c "gem install foreman"
+
+# Install GDK
+RUN bash -l -c "gdk install"
+
+# Run GDK
+CMD ["gdk run"]
