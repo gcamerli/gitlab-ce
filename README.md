@@ -35,34 +35,6 @@ To automate the operations with **docker** use the following scripts:
 + [stop.sh](script/stop.sh)
 + [remove.sh](script/remove.sh)
 
-### **Setup**
-
-**1)** While the container is running, execute:
-
-```bash
-$ ./rvm_setup.sh
-```
-
-**2)** When RVM is properly set, refresh the session with:
-
-```bash
-$ rvm 2.3.6 # The good version of Ruby for Gitlab CE
-```
-
-**3)** Install **Gitlab CE**, executing:
-
-```bash
-$ ./gdk_setup.sh
-```
-
-Take a coffee...
-
-**4)** When Gitlab is properly installed, execute:
-
-```bash
-$ gdk run
-```
-
 Enjoy your commits.
 
 ### **Documentation**
