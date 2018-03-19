@@ -53,6 +53,7 @@ RUN rm -rf package-query/ yaourt/
 RUN yaourt --noconfirm -S postgresql-9.6
 
 # Install RVM
+RUN curl -sSL https://rvm.io/mpapis.asc | gpg2 --import -
 RUN curl -sSL https://get.rvm.io | bash -s stable
 
 # Set zsh as default shell
