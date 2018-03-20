@@ -84,4 +84,4 @@ RUN bash -l -c "gem install foreman"
 RUN bash -l -c "gdk install"
 
 # Run GDK
-ENTRYPOINT ["gdk run"]
+ENTRYPOINT bash -l -c "gdk run"
