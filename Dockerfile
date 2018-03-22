@@ -75,13 +75,17 @@ RUN bash -l -c "gem install gitlab-development-kit"
 RUN bash -l -c "gdk init"
 
 WORKDIR $HOME/gitlab-development-kit
-RUN echo 0.0.0.0 > host
 
 # Install foreman
 RUN bash -l -c "gem install foreman"
 
 # Install GDK
 RUN bash -l -c "gdk install"
+
+# GDK config
+RUN echo 3000 > port
+RUN echo 0.0.0.0 > host
+RUN echo gitlab.example.com > hostname
 
 # Run GDK
 ENTRYPOINT bash -l -c "gdk run"
